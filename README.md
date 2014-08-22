@@ -97,7 +97,8 @@ query
 		"counter": false,
 		"counterMax": null,
 		"resetValue": 0
-	});
+	})
+	.toString();
 ```
 
 

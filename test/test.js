@@ -297,143 +297,72 @@ describe( 'query', function tests() {
 
 	}); // end TESTS rate options
 
+	// SERIALIZATION //
 
-	// TAGS //
+	describe( 'toString', function tests() {
 
-	describe( 'tags', function tests() {
-
-		it( 'should provide a method to get/set tag names and values', function test() {
+		it( 'should provide a method to serialize a query', function test() {
 			var query = new Query();
-			expect( query.tags ).to.be.a( 'function' );
+			expect( query.toString ).to.be.a( 'function' );
 		});
 
-		it( 'should not allow a non-string tag name', function test() {
+		it( 'should serialize a query', function test() {
 			var query = new Query(),
-				values = [
-					5,
-					[],
-					{},
-					true,
-					null,
-					undefined,
-					NaN,
-					function(){}
-				];
+				expected = 'sum';
 
-			for ( var i = 0; i < values.length; i++ ) {
-				expect( badValue( values[i] ) ).to.throw( Error );
-			}
+			query
+				.aggregator( 'sum' )
+				.downsample( null )
+				.rate( false );
 
-			function badValue( value ) {
-				return function() {
-					query.tags( value );
-				};
-			}
+			assert.strictEqual( query.toString(), expected );
 		});
 
-		it( 'should not allow a non-string tag value', function test() {
+		it( 'should serialize a query', function test() {
 			var query = new Query(),
-				values = [
-					5,
-					[],
-					{},
-					true,
-					null,
-					undefined,
-					NaN,
-					function(){}
-				];
+				expected = 'sum:5m-avg';
 
-			for ( var i = 0; i < values.length; i++ ) {
-				expect( badValue( values[i] ) ).to.throw( Error );
-			}
+			query
+				.aggregator( 'sum' )
+				.downsample( '5m-avg' )
+				.rate( false );
 
-			function badValue( value ) {
-				return function() {
-					query.tags( 'tag', value );
-				};
-			}
+			assert.strictEqual( query.toString(), expected );
 		});
 
-		it( 'should set a tag value', function test() {
+		it( 'should serialize a query', function test() {
 			var query = new Query(),
-				tag = 'foo',
-				value = 'bar';
-			query.tags( tag, value );
-			assert.strictEqual( query.tags( tag ), value );
+				expected = 'sum:rate{true,,5}:5m-avg';
+
+			query
+				.aggregator( 'sum' )
+				.downsample( '5m-avg' )
+				.rate( true )
+				.rateOptions({
+					'counter': true,
+					'resetValue': 5
+				});
+
+			assert.strictEqual( query.toString(), expected );
 		});
 
-		it( 'should return all tags', function test() {
+		it( 'should serialize a query', function test() {
 			var query = new Query(),
-				tags = {
-					'tag1': 'value1',
-					'tag2': 'value2'
-				};
+				expected = 'sum:rate{true,5000,5}:5m-avg';
 
-			query.tags( 'tag1', tags.tag1 );
-			query.tags( 'tag2', tags.tag2 );
-			assert.deepEqual( query.tags(), tags );
-		});
+			query
+				.aggregator( 'sum' )
+				.downsample( '5m-avg' )
+				.rate( true )
+				.rateOptions({
+					'counter': true,
+					'counterMax': 5000,
+					'resetValue': 5
+				});
 
-		it( 'should return a tag value', function test() {
-			var query = new Query(),
-				tag = 'beep',
-				value = 'boop';
-			query.tags( tag, value );
-			assert.strictEqual( query.tags( tag ), value );
+			assert.strictEqual( query.toString(), expected );
 		});
 
 	});
-
-
-	// DELETE TAG //
-
-	describe( 'deleting a tag', function tests() {
-
-		it( 'should provide a method to delete a tag', function test() {
-			var query = new Query();
-			expect( query.dtag ).to.be.a( 'function' );
-		});
-
-		it( 'should require a tag name as input', function test() {
-			var query = new Query();
-			expect( query.dtag ).to.throw( Error );
-		});
-
-		it( 'should not allow a non-string tag name', function test() {
-			var query = new Query(),
-				values = [
-					5,
-					[],
-					{},
-					true,
-					null,
-					undefined,
-					NaN,
-					function(){}
-				];
-
-			for ( var i = 0; i < values.length; i++ ) {
-				expect( badValue( values[i] ) ).to.throw( Error );
-			}
-
-			function badValue( value ) {
-				return function() {
-					query.dtag( value );
-				};
-			}
-		});
-
-		it( 'should delete a tag', function test() {
-			var query = new Query(),
-				tag = 'tag',
-				value = 'value';
-			query.tags( tag, value );
-			assert.strictEqual( query.tags( tag ), value );
-			query.dtag( tag );
-			assert.isUndefined( query.tags( tag ) );
-		});
-
-	}); // end TESTS dtag
 
 });

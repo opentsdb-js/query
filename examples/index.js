@@ -50,12 +50,12 @@
 			'resetValue': 0
 		});
 
-	// Get the aggregator:
-	console.log( query.aggregator() );
+	// Serialize the query:
+	console.log( query.toString() );
 
 	/**
 	* Returns:
-	*	'avg'
+	*	'avg:rate{false,,0}'
 	*/
 
 })();
