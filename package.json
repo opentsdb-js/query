@@ -4,7 +4,7 @@
   "description": "Base class for OpenTSDB metric and TSUID queries.",
   "author": {
     "name": "Athan Reines",
-    "email": "athan@nodeprime.com"
+    "email": "kgryte@gmail.com"
   },
   "contributors": [
     {}
@@ -17,10 +17,10 @@
   "main": "./lib",
   "repository": {
     "type": "git",
-    "url": "git://github.com/opentsdb-js/opentsdb-query.git"
+    "url": "git://github.com/opentsdb-js/query.git"
   },
   "bugs": {
-    "url": "https://github.com/opentsdb-js/opentsdb-query/issues"
+    "url": "https://github.com/opentsdb-js/query/issues"
   },
   "keywords": [
     "opentsdb",

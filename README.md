@@ -80,7 +80,7 @@ var rateOptions = {
 ```
 
 
----
+
 ## Notes
 
 When used as setters, all setter/getter methods are chainable. For example,
@@ -102,7 +102,7 @@ query
 ```
 
 
----
+
 ## Tests
 
 ### Unit
@@ -131,7 +131,7 @@ $ make view-cov
 ```
 
 
----
+
 ## License
 
 [MIT license](http://opensource.org/licenses/MIT). 
@@ -146,17 +146,17 @@ Copyright &copy; 2014. Athan Reines.
 [npm-image]: http://img.shields.io/npm/v/opentsdb-query.svg
 [npm-url]: https://npmjs.org/package/opentsdb-query
 
-[travis-image]: http://img.shields.io/travis/opentsdb-js/opentsdb-query/master.svg
-[travis-url]: https://travis-ci.org/opentsdb-js/opentsdb-query
+[travis-image]: http://img.shields.io/travis/opentsdb-js/query/master.svg
+[travis-url]: https://travis-ci.org/opentsdb-js/query
 
-[coveralls-image]: https://img.shields.io/coveralls/opentsdb-js/opentsdb-query/master.svg
-[coveralls-url]: https://coveralls.io/r/opentsdb-js/opentsdb-query?branch=master
+[coveralls-image]: https://img.shields.io/coveralls/opentsdb-js/query/master.svg
+[coveralls-url]: https://coveralls.io/r/opentsdb-js/query?branch=master
 
-[dependencies-image]: http://img.shields.io/david/opentsdb-js/opentsdb-query.svg
-[dependencies-url]: https://david-dm.org/opentsdb-js/opentsdb-query
+[dependencies-image]: http://img.shields.io/david/opentsdb-js/query.svg
+[dependencies-url]: https://david-dm.org/opentsdb-js/query
 
-[dev-dependencies-image]: http://img.shields.io/david/dev/opentsdb-js/opentsdb-query.svg
-[dev-dependencies-url]: https://david-dm.org/dev/opentsdb-js/opentsdb-query
+[dev-dependencies-image]: http://img.shields.io/david/dev/opentsdb-js/query.svg
+[dev-dependencies-url]: https://david-dm.org/dev/opentsdb-js/query
 
-[github-issues-image]: http://img.shields.io/github/issues/opentsdb-js/opentsdb-query.svg
-[github-issues-url]: https://github.com/opentsdb-js/opentsdb-query/issues
+[github-issues-image]: http://img.shields.io/github/issues/opentsdb-js/query.svg
+[github-issues-url]: https://github.com/opentsdb-js/query/issues
