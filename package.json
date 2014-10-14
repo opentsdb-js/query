@@ -1,6 +1,6 @@
 {
   "name": "opentsdb-query",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Base class for OpenTSDB metric and TSUID queries.",
   "author": {
     "name": "Athan Reines",
