@@ -1,7 +1,7 @@
 {
   "name": "opentsdb-query",
   "version": "0.0.0",
-  "description": "Base class for OpenTSDB queries.",
+  "description": "Base class for OpenTSDB metric and TSUID queries.",
   "author": {
     "name": "Athan Reines",
     "email": "athan@nodeprime.com"

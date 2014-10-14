@@ -2,7 +2,7 @@ Query
 =====
 [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Coverage Status][coveralls-image]][coveralls-url] [![Dependencies][dependencies-image]][dependencies-url]
 
-> Base class for [OpenTSDB](http://opentsdb.net) queries.
+> Base class for [OpenTSDB](http://opentsdb.net) metric and TSUID queries.
 
 
 ### Install
@@ -47,7 +47,7 @@ query.aggregator( 'min' );
 
 #### query.downsample( [downsample] )
 
-This method is a setter/getter. If no `downsample` function is provided, returns the configured `downsample` function. By default, downsampling is turned off. To specify a `downsample` function,
+This method is a setter/getter. If no `downsample` function is provided, returns the configured `downsample` function. By default, downsampling is turned off (i.e., set to `null`). To specify a `downsample` function,
 
 ``` javascript
 query.downsample( '5s-avg' );
@@ -127,7 +127,7 @@ $ make test-cov
 Istanbul creates a `./reports/coverage` directory. To access an HTML version of the report,
 
 ``` bash
-$ open reports/coverage/lcov-report/index.html
+$ make view-cov
 ```
 
 

@@ -47,7 +47,7 @@ describe( 'query', function tests() {
 				];
 
 			for ( var i = 0; i < values.length; i++ ) {
-				expect( badValue( values[i] ) ).to.throw( Error );
+				expect( badValue( values[i] ) ).to.throw( TypeError );
 			}
 
 			function badValue( value ) {
@@ -88,7 +88,7 @@ describe( 'query', function tests() {
 				];
 
 			for ( var i = 0; i < values.length; i++ ) {
-				expect( badValue( values[i] ) ).to.throw( Error );
+				expect( badValue( values[i] ) ).to.throw( TypeError );
 			}
 
 			function badValue( value ) {
@@ -98,11 +98,48 @@ describe( 'query', function tests() {
 			}
 		});
 
-		it( 'should set the downsample function', function test() {
-			var query = new Query();
+		it( 'should enforce a valid downsample format', function test() {
+			var query = new Query(),
+				values = [
+					'ms-sum',
+					'10s avg',
+					'10ms-100avg',
+					'5seconds-sum',
+					'2min-min',
+					'1000h- min',
+					'5savg',
+					'9u-min'
+				];
 
-			query.downsample( '60m-avg' );
-			assert.strictEqual( query.downsample(), '60m-avg' );
+			for ( var i = 0; i < values.length; i++ ) {
+				expect( badValue( values[i] ) ).to.throw( Error );
+			}
+
+			function badValue( value ) {
+				return function() {
+					console.log( value );
+					query.downsample( value );
+				};
+			}
+		});
+
+		it( 'should set the downsample function', function test() {
+			var query = new Query(),
+				values = [
+					'5ms-sum',
+					'10s-avg',
+					'2m-min',
+					'7h-avg',
+					'100d-max',
+					'1w-avg',
+					'4n-sum',
+					'90y-max'
+				];
+
+			for ( var i = 0; i < values.length; i++ ) {
+				query.downsample( values[i] );
+				assert.strictEqual( query.downsample(), values[i] );
+			}
 
 			query.downsample( null );
 			assert.isNull( query.downsample() );
@@ -134,7 +171,7 @@ describe( 'query', function tests() {
 				];
 
 			for ( var i = 0; i < values.length; i++ ) {
-				expect( badValue( values[i] ) ).to.throw( Error );
+				expect( badValue( values[i] ) ).to.throw( TypeError );
 			}
 
 			function badValue( value ) {
@@ -175,7 +212,7 @@ describe( 'query', function tests() {
 				];
 
 			for ( var i = 0; i < values.length; i++ ) {
-				expect( badValue( values[i] ) ).to.throw( Error );
+				expect( badValue( values[i] ) ).to.throw( TypeError );
 			}
 
 			function badValue( value ) {
@@ -201,7 +238,7 @@ describe( 'query', function tests() {
 				};
 
 			for ( var i = 0; i < values.length; i++ ) {
-				expect( badValue( values[i] ) ).to.throw( Error );
+				expect( badValue( values[i] ) ).to.throw( TypeError );
 			}
 
 			function badValue( value ) {
@@ -237,7 +274,7 @@ describe( 'query', function tests() {
 				};
 
 			for ( var i = 0; i < values.length; i++ ) {
-				expect( badValue( values[i] ) ).to.throw( Error );
+				expect( badValue( values[i] ) ).to.throw( TypeError );
 			}
 
 			function badValue( value ) {
@@ -274,7 +311,7 @@ describe( 'query', function tests() {
 				};
 
 			for ( var i = 0; i < values.length; i++ ) {
-				expect( badValue( values[i] ) ).to.throw( Error );
+				expect( badValue( values[i] ) ).to.throw( TypeError );
 			}
 
 			function badValue( value ) {
